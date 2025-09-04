@@ -54,9 +54,8 @@ function [q, q_5, q_95, Q, Q_5, Q_95] = q_altomare(Htoe, Tm, Rc, htoe, alpha, m)
 %   - L0 = 1.56 Tm^2 is a deep-water approximation; here it only affects ξ_δ.
 %
 % REFERENCES
-%   - Altomare, C. et al. (2016) "Wave overtopping of steep slopes:
-%     performance of the EurOtop formulae for smooth and permeable slopes".
-%   - EurOtop (2018) "Manual on wave overtopping of sea defences and related
+%   - Altomare, C. et al. (2016) " Wave overtopping of sea dikes with very shallow foreshores". 
+%   - EurOtop (2018) "Manual on wave overtopping of sea defences and related 
 %     structures". Reduction factors γ_f, γ_β, γ_nu, γ_break.
 %
 % Author: César Esparza A. University of Edinburgh (rewritten, commented, and minor fixes)
@@ -138,6 +137,7 @@ q_5  = Q_5  .* sqrt(g .* Htoe.^3);
 q = Q .* sqrt(g .* Htoe.^3);
 
 end
+
 
 
 
