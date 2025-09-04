@@ -74,7 +74,7 @@ if any([Htoe, Tm] <= 0) | any([Rc, htoe] < 0) | any([alpha, m] <= 0)
     error('Inputs must satisfy: Htoe>0, Tm>0, alpha>0, m>0, and Rc, htoe >= 0.');
 end
 
-%% Helper: degrees form of slopes for tand/atand consistency
+%% Helper: degrees form of slopes for tand/atand consistency 
 alpha_deg = atand(alpha);  % structure slope angle in degrees
 m_deg     = atand(m);      % foreshore slope angle in degrees
 
@@ -138,5 +138,6 @@ q_5  = Q_5  .* sqrt(g .* Htoe.^3);
 q = Q .* sqrt(g .* Htoe.^3);
 
 end
+
 
 
