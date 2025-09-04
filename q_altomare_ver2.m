@@ -60,28 +60,28 @@ function [q, q_5, q_95, Q, Q_5, Q_95] = q_altomare(Htoe, Tm, Rc, htoe, alpha, m)
 %     structures". Reduction factors γ_f, γ_β, γ_nu, γ_break.
 %
 % Author: César Esparza A. University of Edinburgh (rewritten, commented, and minor fixes)
-% ───────────────────────────────────────────────────────────────────────────
+%
 
-%% ── Constants & γ-factors (set to 1 here; adjust if needed) ───────────────
+%% Constants & γ-factors (set to 1 here; adjust if needed) 
 g           = 9.81;   % [m/s^2]
-gamma_f     = 1.0;    %#ok<NASGU>  % roughness (not used here explicitly)
-gamma_beta  = 1.0;    %#ok<NASGU>  % obliquity (not used here explicitly)
-gamma_nu    = 1.0;    %#ok<NASGU>  % permeability/porosity (not used here)
+gamma_f     = 1.0;    %  % roughness (not used here explicitly)
+gamma_beta  = 1.0;    % % obliquity (not used here explicitly)
+gamma_nu    = 1.0;    %  % permeability/porosity (not used here)
 gamma_break = 1.0;               % breaking factor (used in Ru update)
 
-%% ── Basic checks (lightweight) ────────────────────────────────────────────
+%% Basic checks (lightweight)
 if any([Htoe, Tm] <= 0) | any([Rc, htoe] < 0) | any([alpha, m] <= 0)
     error('Inputs must satisfy: Htoe>0, Tm>0, alpha>0, m>0, and Rc, htoe >= 0.');
 end
 
-%% ── Helper: degrees form of slopes for tand/atand consistency ─────────────
+%% Helper: degrees form of slopes for tand/atand consistency 
 alpha_deg = atand(alpha);  % structure slope angle in degrees
 m_deg     = atand(m);      % foreshore slope angle in degrees
 
-%% ── Deep-water wavelength and Iribarren skeleton ──────────────────────────
+%% Deep-water wavelength and Iribarren skeleton 
 L0 = 1.56 .* Tm.^2;        % [m] deep-water wavelength (linear theory approx)
 
-%% ── Iteration: Equivalent slope via run-up Ru (Altomare 2016) ─────────────
+%% Iteration: Equivalent slope via run-up Ru (Altomare 2016) 
 Ru      = 1.5 .* Htoe;    % initial guess for run-up (m)
 tol_pc  = 1.0;             % [%] relative change tolerance
 max_it  = 100;             % safety cap on iterations
@@ -117,7 +117,7 @@ while true
     end
 end
 
-%% ── Mean discharge: dimensionless Q and dimensional q 
+%% Mean discharge: dimensionless Q and dimensional q 
 % Altomare regression intercept and scatter
 c        = -0.791;     % intercept in base-10 logarithmic regression
 sigma_c  = 0.294;      % 1-sigma scatter of intercept
@@ -138,3 +138,4 @@ q_5  = Q_5  .* sqrt(g .* Htoe.^3);
 q = Q .* sqrt(g .* Htoe.^3);
 
 end
+
